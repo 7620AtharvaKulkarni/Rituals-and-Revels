@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details | Event Management System</title>
+    <link rel="stylesheet" href="event-details.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Styling for the Event Section */
+h1 {
+    text-align: center;
+    font-size: 32px;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.event-category {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.event-category h2 {
+    font-size: 28px;
+    color: #34495e;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.event-category p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.event-category ul {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.event-category ul li {
+    margin-bottom: 10px;
+}
+
+.event-image-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.event-image {
+    max-width: 70%;  /* Adjust this percentage to make the image smaller */
+    height: auto;    /* Ensures the aspect ratio is preserved */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin: 0 auto;  /* Centers the image */
+}
+
+
+.event-actions {
+    text-align: center;
+}
+
+.event-actions .btn-book, .event-actions .btn-learn-more {
+    background-color: #2980b9;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.event-actions .btn-book:hover, .event-actions .btn-learn-more:hover {
+    background-color: #1d6f91;
+}
+
+.event-actions .btn-learn-more {
+    background-color: #16a085;
+}
+
+.event-actions .btn-learn-more:hover {
+    background-color: #1f7c72;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="M.I.S_Logo.png" alt="Event Management System Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i>Home</a></li>
+                <li><a href="event-list.html"><i class="fas fa-calendar-alt"></i>Events</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i>About Us</a></li>
+                <li><a href="team.html"><i class="fas fa-users"></i>Our Team</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
+                <li><a href="login-registration.html"><i class="fas fa-user-plus"></i>Join Us</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Event Details Section -->
+    <section class="event-details">
+        <div class="event-category">
+            <h2>Festive Events</h2>
+            <p>Festive events require careful coordination and extensive cultural knowledge. These events often include celebrations like festivals, holidays, and community gatherings. Planning involves:</p>
+            
+            <ul>
+                <li>Understanding traditions and customs.</li>
+                <li>Coordinating with vendors for festive decor and themed activities.</li>
+                <li>Arranging entertainment and special performances.</li>
+            </ul>
+            
+            <div class="event-image-container">
+                <img src="Kumbh Mela" alt="Festive Event" class="event-image">
+            </div>
+            
+            <div class="event-actions">
+                <a href="contact.html" class="btn-book">
+                    Book Your Event
+                </a>
+            </div>
+        </div>
+        <h1>Event Details</h1>
+        
+        <div class="event-category">
+            <h2>Corporate Events</h2>
+            <p>Corporate events range from conferences and workshops to company parties and networking gatherings. These events need thorough planning to ensure professionalism and seamless execution. Key planning aspects include:</p>
+            
+            <ul>
+                <li>Developing an agenda and coordinating speakers or facilitators.</li>
+                <li>Managing registration, seating, and attendee engagement.</li>
+                <li>Setting up audiovisual equipment and technical support.</li>
+            </ul>
+            
+            <div class="event-image-container">
+                <img src="Event planner 5.jpeg" alt="Corporate Event" class="event-image">
+            </div>
+            
+            <div class="event-actions">
+                <a href="contact.html" class="btn-book">
+                    Book Your Event
+                </a>
+            </div>
+        </div>
+        
+        <div class="event-category">
+            <h2>Casual Events</h2>
+            <p>Casual events like birthday parties, reunions, and informal gatherings still require thoughtful planning to create enjoyable experiences. Important elements include:</p>
+            
+            <ul>
+                <li>Choosing a comfortable and suitable venue.</li>
+                <li>Planning food, beverages, and fun activities.</li>
+                <li>Ensuring the availability of event support like photographers or entertainment.</li>
+            </ul>
+            
+            <div class="event-image-container">
+                <img src="Birthday" alt="Casual Event" class="event-image">
+            </div>
+            
+            <div class="event-actions">
+                <a href="contact.html" class="btn-book">
+                    Book Your Event
+                </a>
+            </div>
+        </div>
+        
+        <div class="event-category">
+            <h2>Traditional Events</h2>
+            <p>Traditional events are rooted in cultural practices and ceremonies that are celebrated across communities. Planning these events involves a deep understanding of customs, rituals, and significant milestones. Key planning points include:</p>
+            
+            <ul>
+                <li>Understanding the cultural significance and traditions involved.</li>
+                <li>Coordinating rituals, ceremonies, and performances.</li>
+                <li>Managing community engagement and ensuring proper venue setup.</li>
+            </ul>
+            
+            <div class="event-image-container">
+                <img src="WhatsApp Image 2024-12-06 at 10.22.53_8cd8f262.jpg" alt="Traditional Event" class="event-image">
+            </div>
+            
+            <div class="event-actions">
+                <a href="contact.html" class="btn-book">
+                    Book Your Event
+                </a>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Rituals & Revels. All rights reserved.</p>
+        <div class="social-media">
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="30" height="30"></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" width="30" height="30"></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" width="30" height="30"></a>
+            <a href="mailto:Rushikesh.pattiwar.@adypu.edu.in"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail" width="30" height="30"></a>
+            <a href="https://www.linkedin.com/in/rushikeshpattiwar?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="LinkedIn" width="30" height="30"></a>
+            <a href="tel:+91-9373095149"><img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Contact" width="30" height="30"></a>       
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="event-list.js"></script>
+    <script src="event-form.js"></script>
+    
+</body>
+</html>

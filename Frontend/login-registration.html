@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+            /* Login/Registration styles.css */
+            /* Existing styles... */
+            /* Universal box-sizing and clearfix */
+            *, *:after, *:before {
+                box-sizing: border-box;
+            }
+
+            .clearfix:after,
+            .clearfix:before {
+                content: "";
+                display: table;
+            }
+            .clearfix:after {
+                clear: both;
+                display: block;
+            }
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            /* Login wrapper */
+            /* Overlay with traditional colors */
+            .login-wrap {
+                width: 100%;
+                margin: auto;
+                max-width: 525px;
+                min-height: 670px;
+                position: relative;
+                background: url(https://businessconnectindia.in/wp-content/uploads/2019/12/Blog-1-1536x978.jpg)
+                no-repeat ;
+                background-size: cover;
+                box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
+                0 17px 50px 0 rgba(0, 0, 0, 0.19);
+            }
+            .login-html {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                padding: 90px 70px 50px 70px;
+                background:  rgba(244, 209, 157, 0.85); /* Traditional yellowish tone */
+            }
+            .login-html .sign-in-htm,
+            .login-html .sign-up-htm {
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                position: absolute;
+                transform: rotateY(180deg);
+                backface-visibility: hidden;
+                transition: all 0.4s linear;
+            }
+            .login-html .sign-in,
+            .login-html .sign-up,
+            .login-form .group .check {
+                display: none;
+            }
+            .login-html .tab,
+            .login-form .group .label,
+            .login-form .group .button {
+                text-transform: uppercase;
+            }
+            .login-html .tab {
+                font-size: 22px;
+                margin-right: 15px;
+                cursor: pointer;
+                padding-bottom: 5px;
+                margin: 0 15px 10px 0;
+                display: inline-block;
+                border-bottom: 2px solid transparent;
+                font-family: "Georgia", serif; /* Traditional serif font */
+                color: #4c3b1f;
+            }
+            .login-html .sign-in:checked + .tab,
+            .login-html .sign-up:checked + .tab {
+                color: #056049;
+                border-color: #056049;
+                cursor: pointer;
+                font-family: Algerian;
+            }
+            .login-form {
+                min-height: 345px;
+                position: relative;
+                perspective: 1000px;
+                transform-style: preserve-3d;
+                animation: fadeIn 2s ease-out; /* Fade-in animation */
+            }
+            @keyframes fadeIn {
+                0% { opacity: 0; transform: translateY(20px); }
+                100% { opacity: 1; transform: translateY(0); }
+            }
+            .login-form .group {
+                margin-bottom: 15px;
+            }
+            .login-form .group .label,
+            .login-form .group .input,
+            .login-form .group .button {
+                width: 100%;
+                color: #4c3b1f;
+                display: block;
+                font-family: "Georgia", serif;
+            }
+            .login-form .group .input,
+            .login-form .group .button {
+                border: none;
+                padding: 15px 20px;
+                border-radius: 25px;
+                background: rgba(255, 0, 0, 0.189);
+                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+                transition: background 0.3s, transform 0.3s;
+            }
+            .login-form .group input[data-type="password"] {
+                -webkit-text-security: circle;
+            }
+            .login-form .group .label {
+                color: #000000;
+                font-size: 12px;
+                font-family: Algerian;
+            }
+
+            /* Button animations */
+            .login-form .group .button {
+                background: #b05214;
+                cursor: pointer;
+            }
+            .login-form .group .button:hover {
+                background:#2960be;
+                transform: scale(1.05);
+                transition: all 0.3s ease-in-out;
+                cursor: pointer;
+                }
+            .login-form .group label .icon {
+                width: 15px;
+                height: 15px;
+                border-radius: 2px;
+                position: relative;
+                display: inline-block;
+                background: rgba(255, 255, 255, 0.1);
+            }
+            .login-form .group label .icon:before,
+            .login-form .group label .icon:after {
+                content: "";
+                width: 10px;
+                height: 2px;
+                background: #fff;
+                position: absolute;
+                transition: all 0.2s ease-in-out 0s;
+            }
+            .login-form .group label .icon:before {
+                left: 3px;
+                width: 5px;
+                bottom: 6px;
+                transform: scale(0) rotate(0);
+            }
+            .login-form .group label .icon:after {
+                top: 6px;
+                right: 0;
+                transform: scale(0) rotate(0);
+            }
+            .login-form .group .check:checked + label {
+                color: #fff;
+            }
+            .login-form .group .check:checked + label .icon {
+                background: #1161ee;
+            }
+            .login-form .group .check:checked + label .icon:before {
+                transform: scale(1) rotate(45deg);
+            }
+            .login-form .group .check:checked + label .icon:after {
+                transform: scale(1) rotate(-45deg);
+            }
+            .login-html
+                .sign-in:checked
+                + .tab
+                + .sign-up
+                + .tab
+                + .login-form
+                .sign-in-htm {
+                transform: rotate(0);
+            }
+            .login-html .sign-up:checked + .tab + .login-form .sign-up-htm {
+                transform: rotate(0);
+            }
+            .hr {
+                height: 2px;
+                margin: 60px 0 50px 0;
+                background: rgba(255, 255, 255, 0.2);
+            }
+
+            /* Forgot password link */
+            .foot-lnk {
+                text-align: center;
+                font-family: "Georgia", serif;
+            }
+
+            /* 404 styles.css */
+            /* Existing styles... */
+            #error-message {
+                text-align: center;
+                margin: 50px;
+            }
+
+            #error-message h2 {
+                font-size: 2em;
+                margin-bottom: 20px;
+            }
+
+            #error-message p {
+                font-size: 1.2em;
+            }
+
+            #error-message a {
+                color: #007bff;
+                text-decoration: none;
+            }
+
+            #error-message a:hover {
+                text-decoration: underline;
+            }
+
+            /* styles.css */
+            /* General Styles */
+            main {
+                padding: 20px;
+            }
+
+            /* Buttons */
+            .button {
+                background: #333;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                text-transform: uppercase;
+                cursor: pointer;
+            }
+
+            .button:hover {
+                background: #555;
+            }
+
+            /* Forms */
+            form {
+                margin: 20px auto;
+                max-width: 600px;
+                padding: 20px;
+                background: #fff;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            form label {
+                display: block;
+                margin: 10px 0 5px;
+            }
+
+            form input[type="text"], form input[type="email"], form input[type="password"], form select {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+
+            form input[type="submit"] {
+                background: #333;
+                color: #fff;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+                text-transform: uppercase;
+            }
+
+            form input[type="submit"]:hover {
+                background: #555;
+            }
+
+            /* General Styles */
+            .container {
+                width: 80%;
+                margin: auto;
+                overflow: hidden;
+            }
+
+            /* Login wrapper */
+            /* Overlay with traditional colors */
+            .login-html {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                padding: 90px 70px 50px 70px;
+                background: rgba(157, 244, 235, 0.85); /* Traditional yellowish tone */
+                backdrop-filter: blur(8px);
+            }
+
+            /* Tabs */
+            /* Form styling */
+            .login-form .group .input, .login-form .group .button {
+                border: none;
+                padding: 15px 20px;
+                border-radius: 25px;
+                background: rgba(139, 69, 19, 0.1); /* Lighter background */
+                
+            }
+
+            .login-form .group .input:focus {
+                background: rgba(139, 69, 19, 0.15);
+            }
+
+            .login-form .group .button {
+                background: #1ed296; /* Call to action button with traditional color */
+                cursor: pointer;
+                color: #fff;
+                font-size: 18px;
+                transition: background 0.3s, transform 0.3s;
+            }
+
+            .login-form .group .button:hover {
+                background: #b05214;
+                transform: scale(1.05);
+            }
+
+            /* Checkboxes and icon styling */
+            .login-form .group label .icon {
+                width: 15px;
+                height: 15px;
+                border-radius: 2px;
+                position: relative;
+                display: inline-block;
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            .login-form .group label .icon:before, .login-form .group label .icon:after {
+                content: "";
+                width: 10px;
+                height: 2px;
+                background: #4c3b1f;
+                position: absolute;
+                transition: all 0.2s ease-in-out 0s;
+            }
+
+            .login-form .group label .icon:before {
+                left: 3px;
+                width: 5px;
+                bottom: 6px;
+                transform: scale(0) rotate(0);
+            }
+
+            .login-form .group label .icon:after {
+                top: 6px;
+                right: 0;
+                transform: scale(0) rotate(0);
+            }
+
+            .login-form .group .check:checked + label {
+                color: #fff;
+            }
+
+            .login-form .group .check:checked + label .icon {
+                background: #d2691e;
+            }
+
+            .login-form .group .check:checked + label .icon:before {
+                transform: scale(1) rotate(45deg);
+            }
+
+            .login-form .group .check:checked + label .icon:after {
+                transform: scale(1) rotate(-45deg);
+            }
+
+            /* Button animations */
+            .login-html .tab {
+                font-family: "Georgia", serif;
+                font-size: 20px;
+                color: #d2691e;
+                cursor: pointer;
+                transition: color 0.3s, border-color 0.3s;
+            }
+
+            .login-html .tab:hover {
+                color: #b05214;
+                border-color: #b05214;
+            }
+            .popup-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 0.5s;
+        }
+
+        .popup-container.success {
+            background-color: #28a745;
+        }
+
+        .popup-container.error {
+            background-color: #dc3545;
+        }
+
+        .popup-container.info {
+            background-color: #17a2b8;
+        }
+
+        .popup-container.fade-out {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="M.I.S_Logo.png" alt="Event Management System Logo"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="event-list.html">Events</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login-registration.html">Join Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="login-wrap">
+            <div class="login-html">
+                <input id="tab-1" type="radio" name="tab" class=" sign-in" checked>
+                <label for="tab-1" class="tab">Sign In</label>
+                <input id="tab-2" type="radio" name="tab" class="sign-up">
+                <label for="tab-2" class="tab">Sign Up</label>
+                <div class="login-form">
+                    <div class="sign-in-htm">
+                        <div class="group">
+                            <label for="email" class="label">Email</label>
+                            <input id="email" type="text" class="input">
+                            <div id="emailError" class="error-message"></div>
+                        </div>
+                        <div class="group">
+                            <label for="password" class="label">Password</label>
+                            <input id="password" type="password" class="input" data-type="password">
+                            <div id="passwordError" class="error-message"></div>
+                        </div>
+                        <div class="group">
+                            <input id="check" type="checkbox" class="check" checked>
+                            <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Sign In" id="signInButton">
+                        </div>
+                    </div>
+                    <div class="sign-up-htm">
+                        <div class="group">
+                            <label for="regEmail" class="label">Email</label>
+                            <input id="regEmail" type="text" class="input">
+                            <div id="regEmailError" class="error-message"></div>
+                        </div>
+                        <div class="group">
+                            <label for="regPassword" class="label">Password</label>
+                            <input id="regPassword" type="password" class="input" data-type="password">
+                            <div id="regPasswordError" class="error-message"></div>
+                        </div>
+                        <div class="group">
+                            <label for="confirmPassword" class="label">Confirm Password</label>
+                            <input id="confirmPassword" type="password" class="input" data-type="password">
+                            <div id="confirmPasswordError" class="error-message"></div>
+                        </div>
+                        <div class="group">
+                            <label for="role" class="label">Role</label>
+                            <select id="role" class="input">
+                                <option value="user">User </option>
+                                <option value="admin">Service Provider</option>
+                            </select>
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Sign Up" id="signUpButton">
+                        </div>
+                        <div class="hr"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(String(email).toLowerCase());
+        }
+    
+        function showPopupMessage(message, type = 'info') {
+            const popupContainer = document.createElement('div');
+            popupContainer.className = `popup-container ${type}`;
+            popupContainer.textContent = message;
+    
+            document.body.appendChild(popupContainer);
+            popupContainer.style.display = 'block'; // Show the popup
+    
+            setTimeout(() => {
+                popupContainer.classList.add('fade-out');
+                setTimeout(() => document.body.removeChild(popupContainer), 500);
+            }, 3000);
+        }
+    
+        document.getElementById('signInButton').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+    let emailError = document.getElementById('emailError');
+    let passwordError = document.getElementById('passwordError');
+
+    emailError.textContent = ''; // Clear previous error messages
+    passwordError.textContent = '';
+
+    let isValid = true; // Flag to track validation
+
+    // Validate email
+    if (!validateEmail(email)) {
+        emailError.textContent = 'Invalid email format';
+        showPopupMessage('Invalid email format', 'error');
+        isValid = false; // Set flag to false if validation fails
+    }
+
+    // Validate password length
+    if (password.length < 6) {
+        passwordError.textContent = 'Password must be at least 6 characters';
+        showPopupMessage('Password must be at least 6 characters', 'error');
+        isValid = false; // Set flag to false if validation fails
+}
+
+// Check if both validations passed
+if (isValid) {
+    // Verify credentials (replace with your actual verification logic)
+    const validCredentials = {
+        'rushikesh.pattiwar@adypu.edu.in': 'Rushikesh@10',
+        // Add more valid credentials here
+    };
+
+    // Move the else here, ensuring it corresponds to an if block
+    if (validCredentials[email] && validCredentials[email] === password) {
+        showPopupMessage('Welcome Owner!', 'success');
+    } else {
+        showPopupMessage('User not found or incorrect password', 'error');
+    }
+} else {
+    showPopupMessage('Sign in successful', 'error'); // This should ideally be rephrased since it triggers on invalid input
+}
+
+});
+
+document.getElementById('signUpButton').addEventListener('click', function(event) {
+    event.preventDefault();
+    let regEmail = document.getElementById('regEmail').value;
+    let regPassword = document.getElementById('regPassword').value;
+    let confirmPassword = document.getElementById('confirmPassword').value;
+    let regEmailError = document.getElementById('regEmailError');
+    let regPasswordError = document.getElementById('regPasswordError');
+    let confirmPasswordError = document.getElementById('confirmPasswordError');
+    regEmailError.textContent = '';
+    regPasswordError.textContent = '';
+    confirmPasswordError.textContent = '';
+
+    if (!validateEmail(regEmail)) {
+        regEmailError.textContent = 'Invalid email format';
+        showPopupMessage('Invalid email format', 'error');
+    }
+    if (regPassword.length < 6) {
+        regPasswordError.textContent = 'Password must be at least 6 characters';
+        showPopupMessage('Password must be at least 6 characters', 'error');
+    }
+    if (regPassword !== confirmPassword) {
+        confirmPasswordError.textContent = 'Passwords do not match';
+        showPopupMessage('Passwords do not match', 'error');
+    }
+    if (validateEmail(regEmail) && regPassword.length >= 6 && regPassword === confirmPassword) {
+        showPopupMessage('Sign Up successful', 'success');
+    }
+});
+
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+}
+
+    </script>
+    <footer>
+        <p>&copy; 2024 Rituals & Revels. All rights reserved.</p>
+        <div class="social-media">
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="30" height="30"></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" width="30" height="30"></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" width="30" height="30"></a>
+            <a href="mailto:Rushikesh.pattiwar.@adypu.edu.in"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail" width="30" height="30"></a>
+            <a href="https://www.linkedin.com/in/rushikeshpattiwar?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="LinkedIn" width="30" height="30"></a>
+            <a href="tel:+91-9373095149"><img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Contact" width="30" height="30"></a>       
+        </div>
+    </footer>
+</body>
+</html>
